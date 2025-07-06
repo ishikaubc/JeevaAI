@@ -1,5 +1,6 @@
 # JeevaAI
 AI for Good Hackathon
+
 Feature 1: Donor Availability Predictor
 Collect past donation data
 Use Logistic Regression / Random Forest to predict donor likelihood
