@@ -12,7 +12,6 @@ NLP-based responses on Thalassemia topics (symptoms, nutrition, transfusion)
 Use LangChain + OpenAI or Ollama 
 
 
-
 To install dependencies:
 ```bash
 python3.13 -m venv venv
