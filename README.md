@@ -23,3 +23,8 @@ To run server:
 ```bash
 python -m backend.app
 ```
+
+To open SwaggerUI:
+```bash
+http://localhost:8000/docs
+```
