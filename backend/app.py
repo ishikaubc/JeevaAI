@@ -1,7 +1,7 @@
 from flask import Flask, request
 from flask_restx import Api, Resource, fields
 from flask_cors import CORS
-from predict import DonorAvailabilityPredictor
+from utils.predict import DonorAvailabilityPredictor
 
 app = Flask(__name__)
 CORS(app)
