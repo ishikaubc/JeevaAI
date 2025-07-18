@@ -4,7 +4,7 @@ from flask_cors import CORS
 from utils.predict import DonorAvailabilityPredictor
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins=["http://localhost:5173"])
 
 @app.route("/", methods=["GET"])
 def home():
@@ -25,8 +25,8 @@ class DonorPredictor(Resource):
     @ns.expect(code_model)
     def post(self):
         data = request.get_json()
+
         required_fields = ["region", "days_since_last_donation", "willing_to_donate"]
-        
         for field in required_fields:
             if field not in data:
                 return {"error": f"Missing field: {field}"}, 400
@@ -38,10 +38,10 @@ class DonorPredictor(Resource):
         try:
             predictor = DonorAvailabilityPredictor()
             result = predictor.predict_availability(region, days, willing)
+            return {"prediction": result}, 200  
         except Exception as e:
+            print("Prediction Error:", str(e))  
             return {"error": f"Prediction failed: {str(e)}"}, 500
-
-        return result, 200
 
 if __name__ == "__main__":
     app.run(debug=True, port=8000)
